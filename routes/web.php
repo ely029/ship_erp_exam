@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhoneBookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [PhoneBookController::class, 'index']);
+Route::post('create', [PhoneBookController::class, 'store']);
+Route::get('create', [PhoneBookController::class, 'createPage']);
+Route::get('/edit/{id}', [PhoneBookController::class, 'editPage']);
+Route::post('/edit/{id}/post', [PhoneBookController::class, 'edit']);
+Route::get('delete/confirmation/{id}', [PhoneBookController::class, 'deleteConfirmation']);
+Route::get('/delete/{id}', [PhoneBookController::class, 'delete']);

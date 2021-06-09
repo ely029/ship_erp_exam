@@ -15,32 +15,16 @@
     </head>
     <body class="text-center">
     <div class="container">
-    <form method="POST" action="{{ url('edit') }}">
-    @csrf
     @foreach($users as $user)
-    <input type="hidden" name="id" value="{{ $user->id }}">
+    <form method="POST" action="{{ url('/edit/'.$user->id.'/post') }}">
+    @csrf
+    <input type="hidden" name="id" value="{{ $user->users->id }}">
     <table class="table">
     <tr>
-    <td>Name:</td><td><input type="text" name="name" value="{{ $user->name }}" class="form-control" required></td>
+    <td>Name:</td><td><input type="text" name="full_name" value="{{ $user->users->full_name }}" class="form-control" required></td>
     </tr>
     <tr>
-    <td>Email:</td><td><input type="email" name="email" value="{{ $user->email }}" class="form-control" required></td>
-    </tr>
-    <tr>
-    <td>Address:</td><td><input type="text" name="address" value="{{ $user->address }}" class="form-control" required></td>
-    </tr>
-    <tr>
-    <td>Telephone/Cellphone Number:</td><td><input type="text" name="phone_number" maxlength="11" value="{{ $user->phone_number }}"  class="form-control" required></td>
-    </tr>
-    <tr>
-    <td>Nationality:</td><td><input type="text" name="nationality" maxlength="50" value="{{ $user->nationality }}" class="form-control" required></td>
-    </tr>
-    <tr>
-    <td>Gender:</td><td><select name="gender" class="form-control">
-    <option value="Male" {{ $user->gender == 'Male' ? 'selected' : ''}}>Male</option>
-    <option value="Female" {{ $user->gender == 'Female' ? 'selected' : ''}}>Female</option>
-    </select>
-    </td>
+    <td>Phone Number:</td><td><input type="text" name="phone_number" maxlength='13' value="{{ $user->phone_number }}" class="form-control" required></td>
     </tr>
     <tr>
     <td><input type="submit" class="btn btn-success" value="Click to Edit"></td>

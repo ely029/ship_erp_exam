@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Phone Book App</title>
+        <title>Laravel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,29 +22,9 @@
             }
         </style>
     </head>
-    <body>
-    @if(session('alert'))
-    <div class="alert">
-        <span class="alert__text">{{ session('alert.message') }}</span>
-    </div>
-@endif
-   <table class="table">
-   <tr aria-colspan="4">
-   <th>Phone Book App</th>
-   </tr>
-   <tr>
-   <td><a href="{{ url('create') }}" class="btn btn-success">Create</a></td>
-   </tr>
-   <tbody>
-   <tr>
-   <th>Name</th><th>Phone Number</th>
-   </tr>
-   @foreach ($users as $user)
-   <tr>
-   <td>{{ $user->users->full_name }}</td><td>{{ $user->phone_number }}</td><td><a href="{{ url('edit/'.$user->id) }}" class="btn btn-success">Click to Edit</a></td><td><a href="{{ url('delete/confirmation/'.$user->id)}}">Click to Delete</a></td>
-   <tr>
-   @endforeach
-   </tbody>
-   </table>
+    <body class="container">
+    <span>You are about to delete a data with id number {{ $id }}. Are you sure you will delete this phone number?</span><br>
+    <span><a href="{{ url('/delete/'.$id) }}">Yes</span>
+    <span><a href="{{ url('/')}}">No</a></span>
     </body>
 </html>
